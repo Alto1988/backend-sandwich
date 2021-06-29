@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 
-class Sandwich(models.Model):
+class SandwichStore(models.Model):
     sandwich_name = models.CharField(max_length=200, blank=False)
     street = models.CharField(max_length=400, blank=True)
     city = models.CharField(max_length=400, blank=True)
@@ -15,4 +15,7 @@ class Sandwich(models.Model):
     logo_image = models.ImageField(upload_to='sandwichImages', blank=True, default='sandwichImages/sandwichlogo.png')
     email = models.EmailField(max_length=245, blank=True)
     active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
     
