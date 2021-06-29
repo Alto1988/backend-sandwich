@@ -1,1 +1,5 @@
 *sandwichenv/*
+*backend/backend/__pycache__/*
+*backend/sandwich/__pycache__/*
+*backend/backend/migrations/*
+*backend/db.sqlite3*
