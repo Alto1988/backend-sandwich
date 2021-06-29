@@ -3,3 +3,7 @@
 *backend/sandwich/__pycache__/*
 *backend/backend/migrations/*
 *backend/db.sqlite3*
+*backend/sandwich/migrations/0001_initial.py*
+*backend/sandwich/migrations/__init__.py*
+*backend/sandwich/migrations/__pycache__/__init__.cpython-39.pyc*
+*backend/sandwich/migrations/__pycache__/0001_initial.cpython-39.pyc*
