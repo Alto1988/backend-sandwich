@@ -9,7 +9,6 @@ class SandwichListSerializer(serializers.ModelSerializer):
         fields = ['id','sandwich_name','city','zip_code','logo_image', 'absolute_url']
 
     def get_absolute_url(self, obj):
-        #look up why you need a comma after the obj.pk
         return reverse('sandwich_detail', args=(obj.pk,))
     
     
@@ -33,3 +32,9 @@ class SandwichDetailSerializer(serializers.ModelSerializer):
             'email',
             'active'
         ]
+    def get_update(self, obj):
+        return reverse('sandwich_update', args=(obj.pk,))  
+    
+    
+    def get_delete(self, obj):
+        return reverse('sandwich_delete', args=(obj.pk,))
