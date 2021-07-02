@@ -10,7 +10,7 @@ class SandwichStore(models.Model):
     state= models.CharField(max_length=2, null=True, blank=True)
     zip_code = models.IntegerField(blank=True, default=0)
     website = models.URLField(max_length=420, blank=True)
-    phone_number = models.CharField(validators=[RegexValidator(regex=r'^\1?\d{9,10}$')], max_length=10, blank=True)
+    phone_number = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$', message=("Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."))], max_length=10, blank=True)
     description = models.TextField(blank=True)
     logo_image = models.ImageField(upload_to='sandwichImages', blank=True, default='sandwichImages/sandwichlogo.png')
     email = models.EmailField(max_length=245, blank=True)
