@@ -1,8 +1,29 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, Image, Button, SafeAreaView } from "react-native";
-
+import {
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
+import client from "../screens/api/client";
 export default class ListView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+  componentDidMount() {
+    client.get("/").then((response) => {
+      this.setState({
+        data: response.data,
+      });
+    });
+  }
   render() {
+    const { data } = this.state;
     const myText = "by Jake";
     return (
       <SafeAreaView style={styles.center}>
@@ -16,6 +37,15 @@ export default class ListView extends Component {
         <Button
           title="list Item, Click for Details"
           onPress={() => this.props.navigation.navigate("Detail")}
+        />
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <Text style={styles.itemText}>
+              {item.sandwich_name}, {sandwich_city}
+            </Text>
+          )}
         />
       </SafeAreaView>
     );
